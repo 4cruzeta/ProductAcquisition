@@ -30,7 +30,11 @@ namespace ProductAcquisition
                 else if (type == 'u')
                 {
                     Console.Write("Manufacture date (DD/MM/YYYY): ");
-                    DateTime date = DateTime.Parse(Console.ReadLine());
+
+                    // DateTime date = DateTime.Parse(Console.ReadLine());       *** Dá problema se executado em Mac OSX
+                    //                                                           *** Resolvido com a seguinte linha:
+                    //
+                    DateTime date = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     list.Add(new UsedProduct(name, price, date));
                 }
                 else
